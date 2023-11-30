@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fotos 1029.1</title>
+    <style>
+        @mixin aspect-ratio($width, $height) {
+            position: relative;
+              
+            &:before {
+              display: block;
+              content: "";
+              width: 100%;
+              padding-top: ($height / $width) * 100%;
+            }
+              
+            > img {
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  right: 0;
+                  bottom: 0;
+                  width: 100%;
+                  height: 100%;
+            }
+          }
+          
+          nav {
+            background: #F4F4F4;
+              padding: 50px 0;
+          }
+
+          section {
+              background: #F4F4F4;
+              padding: 50px 0;
+          }
+          
+          .container {
+              max-width: 1044px;
+              margin: 0 auto;
+              padding: 0 20px;
+          }
+          
+          .carousel {
+              display: block;
+              text-align: left;
+              position: relative;
+              margin-bottom: 22px;
+              
+              > input {
+                  clip: rect(1px, 1px, 1px, 1px);
+                  clip-path: inset(50%);
+                  height: 1px;
+                  width: 1px;
+                  margin: -1px;
+                  overflow: hidden;
+                  padding: 0;
+                  position: absolute;
+                  
+                  &:nth-of-type(6):checked ~ .carousel__slides .carousel__slide:first-of-type { margin-left: -500%; }
+                  &:nth-of-type(5):checked ~ .carousel__slides .carousel__slide:first-of-type { margin-left: -400%; }
+                  &:nth-of-type(4):checked ~ .carousel__slides .carousel__slide:first-of-type { margin-left: -300%; }
+                  &:nth-of-type(3):checked ~ .carousel__slides .carousel__slide:first-of-type { margin-left: -200%; }
+                  &:nth-of-type(2):checked ~ .carousel__slides .carousel__slide:first-of-type { margin-left: -100%; }
+                  &:nth-of-type(1):checked ~ .carousel__slides .carousel__slide:first-of-type { margin-left: 0%; }
+                  
+                  &:nth-of-type(1):checked ~ .carousel__thumbnails li:nth-of-type(1) { box-shadow: 0px 0px 0px 5px rgba(0,0,255,0.5); }
+                  &:nth-of-type(2):checked ~ .carousel__thumbnails li:nth-of-type(2) { box-shadow: 0px 0px 0px 5px rgba(0,0,255,0.5); }
+                  &:nth-of-type(3):checked ~ .carousel__thumbnails li:nth-of-type(3) { box-shadow: 0px 0px 0px 5px rgba(0,0,255,0.5); }
+                  &:nth-of-type(4):checked ~ .carousel__thumbnails li:nth-of-type(4) { box-shadow: 0px 0px 0px 5px rgba(0,0,255,0.5); }
+                  &:nth-of-type(5):checked ~ .carousel__thumbnails li:nth-of-type(5) { box-shadow: 0px 0px 0px 5px rgba(0,0,255,0.5); }
+                  &:nth-of-type(6):checked ~ .carousel__thumbnails li:nth-of-type(6) { box-shadow: 0px 0px 0px 5px rgba(0,0,255,0.5); }
+              }
+          }
+          
+          .carousel__slides {
+              position: relative;
+              z-index: 1;
+              padding: 0;
+              margin: 0;
+              overflow: hidden;
+              white-space: nowrap;
+              box-sizing: border-box;
+              display: flex;
+          }
+          
+          .carousel__slide {
+              position: relative;
+              display: block;
+              flex: 1 0 100%;
+              width: 100%;
+              height: 100%;
+              overflow: hidden;
+              transition: all 300ms ease-out;
+              vertical-align: top;
+              box-sizing: border-box;
+              white-space: normal;
+              
+              figure {
+                  display: flex;
+                  margin: 0;
+              }
+              
+              div {
+                  @include aspect-ratio(3, 2);
+                  width: 100%;
+              }
+              
+              img {
+                  display: block;
+                  flex: 1 1 auto;
+                  object-fit: cover;
+              }
+              
+              figcaption {
+                  align-self: flex-end;
+                  padding: 20px 20px 0 20px;
+                  flex: 0 0 auto;
+                  width: 25%;
+                  min-width: 150px;
+              }
+              
+              .credit {
+                  margin-top: 1rem;
+                  color: rgba(0, 0, 0, 0.5);
+                  display: block;        
+              }
+              
+              &.scrollable {
+                  overflow-y: scroll;
+              }
+          }
+          
+          .carousel__thumbnails {
+              list-style: none;
+              padding: 0;
+              margin: 0;
+              display: flex;
+              
+              margin: 0 -10px;
+              
+              .carousel__slides + & {
+                  margin-top: 20px;
+              }
+              
+              li {        
+                  flex: 1 1 auto;
+                  max-width: calc((100% / 6) - 20px);  
+                  margin: 0 10px;
+                  transition: all 300ms ease-in-out;
+              }
+              
+              label {
+                  display: block;
+                  @include aspect-ratio(1,1);
+                  
+                            
+                  &:hover,
+                  &:focus {
+                      cursor: pointer;
+                      
+                      img {
+                          box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.25);
+                          transition: all 300ms ease-in-out;
+                      }
+                  }
+              }
+              
+              img {
+                  display: block;
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+              }
+          }
+        
+        button {
+            --color: #560bad;
+            font-family: inherit;
+            display: inline-block;
+            width: 8em;
+            height: 2.6em;
+            line-height: 2.5em;
+            margin: 20px;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid var(--color);
+            transition: color .5s;
+            z-index: 1;
+            font-size: 17px;
+            border-radius: 6px;
+            font-weight: 500;
+            color: var(--color);
+           }
+           
+           button:before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            background: var(--color);
+            height: 150px;
+            width: 200px;
+            border-radius: 50%;
+           }
+           
+           button:hover {
+            color: #fff;
+           }
+           
+           button:before {
+            top: 100%;
+            left: 100%;
+            transition: all .7s;
+           }
+           
+           button:hover:before {
+            top: -30px;
+            left: -30px;
+           }
+           
+           button:active:before {
+            background: #3a0ca3;
+            transition: background 0s;
+           }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/index.html"><button>Home</button></a>
+    </nav>
+
+    <section>
+        <div class="container">
+            <div class="carousel">
+                <input type="radio" name="slides" checked="checked" id="slide-1">
+                <input type="radio" name="slides" id="slide-2">
+                <input type="radio" name="slides" id="slide-3">
+                <ul class="carousel__slides">
+                    <li class="carousel__slide">
+                        <figure>
+                            <div>
+                                <img src="./1029-1.jpg" alt="">
+                            </div>
+                            <a href="./1029-1.jpg" download="1029-1">
+                                <button> Baixar imagem 1 </button>
+                            </a>
+                            <figcaption>
+                                "Espessura: 1/4 - 6,38 mm.
+
+                                Formação: 7 x 2,03 mm.
+                                
+                                Seção útil do cabo: 22,66 mm.
+                                
+                                Carga de Ruptura HS: 2160 Kgf.
+                                
+                                
+                                Ao utilizar cordoalha na construçao do seu curral, voce economizara 50% comparado com o curral convencional feito de madeira, sem falar na parte estética no qual o seu curral terá uma aspecto mais bonito e eficiente e com vida útil muito maior."
+                            </figcaption>
+                            <button onclick="copiarTexto()">Copiar Texto</button>
+                        </figure>
+                    </li>
+
+                    <li class="carousel__slide">
+                        <figure>
+                            <div>
+                                <img src="./1029-2.jpg" alt="">
+                            </div>
+                            <a href="./1029-2.jpg" download="1029-2">
+                                <button> Baixar imagem 2 </button>
+                            </a>
+                            <figcaption>
+                                "Espessura: 1/4 - 6,38 mm.
+
+                                Formação: 7 x 2,03 mm.
+                                
+                                Seção útil do cabo: 22,66 mm.
+                                
+                                Carga de Ruptura HS: 2160 Kgf.
+                                
+                                
+                                Ao utilizar cordoalha na construçao do seu curral, voce economizara 50% comparado com o curral convencional feito de madeira, sem falar na parte estética no qual o seu curral terá uma aspecto mais bonito e eficiente e com vida útil muito maior."
+                            </figcaption>
+                            <button onclick="copiarTexto()">Copiar Texto</button>
+                        </figure>
+                    </li>
+
+                    <li class="carousel__slide">
+                        <figure>
+                            <div>
+                                <img src="./1029-3.jpg" alt="">
+                            </div>
+                            <a href="./1029-3.jpg" download="1029-3">
+                                <button> Baixar imagem 3 </button>
+                            </a>
+                            <figcaption>
+                                "Espessura: 1/4 - 6,38 mm.
+
+                                Formação: 7 x 2,03 mm.
+                                
+                                Seção útil do cabo: 22,66 mm.
+                                
+                                Carga de Ruptura HS: 2160 Kgf.
+                                
+                                
+                                Ao utilizar cordoalha na construçao do seu curral, voce economizara 50% comparado com o curral convencional feito de madeira, sem falar na parte estética no qual o seu curral terá uma aspecto mais bonito e eficiente e com vida útil muito maior."
+                            </figcaption>
+                            <button onclick="copiarTexto()">Copiar Texto</button>
+                        </figure>
+                    </li>
+                
+                </ul>    
+                <ul class="carousel__thumbnails">
+                    <li>
+                        <label for="slide-1"><img src="./1029-1.jpg" width="100px" height="100px" alt=""></label>
+                    </li>
+                    <li>
+                        <label for="slide-2"><img src="./1029-2.jpg" width="100px" height="100px" alt=""></label>
+                    </li>
+                    <li>
+                        <label for="slide-3"><img src="./1029-3.jpg" width="100px" height="100px" alt=""></label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+    <script>
+        function copiarTexto() {
+          // Cria um elemento de input
+          var inputElement = document.createElement("input");
+    
+          // Define o valor do input para o texto desejado
+          var texto = "Espessura: 1/4 - 6,38 mm. Formação: 7 x 2,03 mm. Seção útil do cabo: 22,66 mm. Carga de Ruptura HS: 2160 Kgf. Ao utilizar cordoalha na construçao do seu curral, voce economizara 50% comparado com o curral convencional feito de madeira, sem falar na parte estética no qual o seu curral terá uma aspecto mais bonito e eficiente e com vida útil muito maior."; 
+          inputElement.value = texto;
+    
+          // Adiciona o input ao corpo do documento
+          document.body.appendChild(inputElement);
+    
+          // Seleciona o conteúdo do input
+          inputElement.select();
+    
+          // Executa o comando de cópia
+          document.execCommand("copy");
+    
+          // Remove o input do corpo do documento
+          document.body.removeChild(inputElement);
+    
+          // Pode-se adicionar uma mensagem de feedback ao usuário
+          alert("Texto copiado com sucesso!");
+        }
+      </script>
+</body>
+</html>
